@@ -1,8 +1,8 @@
-package it.polito.anagrammi.test;
+package it.polito.tdp.anagrammi.test;
 
 import java.util.Set;
 
-import it.polito.anagrammi.model.AnagrammiGenerator;
+import it.polito.tdp.anagrammi.model.AnagrammiGenerator;
 
 public class TestAnagrammi {
 

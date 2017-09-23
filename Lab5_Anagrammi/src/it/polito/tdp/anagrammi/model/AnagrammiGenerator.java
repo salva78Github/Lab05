@@ -1,4 +1,4 @@
-package it.polito.anagrammi.model;
+package it.polito.tdp.anagrammi.model;
 
 import java.util.HashSet;
 import java.util.Set;
