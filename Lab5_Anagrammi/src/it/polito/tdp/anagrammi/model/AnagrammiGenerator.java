@@ -3,13 +3,22 @@ package it.polito.tdp.anagrammi.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import it.polito.tdp.anagrammi.dao.AnagrammaDAO;
+import it.polito.tdp.anagrammi.exception.AnagrammiException;
+
 public class AnagrammiGenerator {
 
-	Set<String> solutions = new HashSet<String>();
-
+	private Set<String> solutions = new HashSet<String>();
+	private AnagrammaDAO adao;
+	
+	public AnagrammiGenerator(){
+		adao = new AnagrammaDAO();
+	}
+	
 	public Set<String> findAnagrammi(String word) {
 
 		int level = 0;
+		solutions.clear();
 		Lettera[] soluzioneParziale = new Lettera[word.length()];
 		recursive(word, level, soluzioneParziale);
 
@@ -63,4 +72,10 @@ public class AnagrammiGenerator {
 
 	}
 
+	
+	public boolean isCorrect(String anagramma) throws AnagrammiException {
+		return adao.isCorrect(anagramma);
+	}
+
+	
 }

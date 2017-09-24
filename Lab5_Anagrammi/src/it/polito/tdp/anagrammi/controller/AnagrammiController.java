@@ -8,6 +8,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Set;
 
+import it.polito.tdp.anagrammi.exception.AnagrammiException;
 import it.polito.tdp.anagrammi.model.AnagrammiGenerator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -45,9 +46,18 @@ public class AnagrammiController {
     	
     	String parola = idTxtParola.getText();
     	Set<String> anagrammi = model.findAnagrammi(parola);
-    	for(String anagramma : anagrammi){
-    		idTxtAnagrammiErrati.appendText(anagramma + "\n");
-    	}
+    	try{
+	    	for(String anagramma : anagrammi){
+	    		if(model.isCorrect(anagramma)){
+	        		idTxtAnagrammiCorretti.appendText(anagramma + "\n");
+	    		}
+	    		else{ 	  		
+	    			idTxtAnagrammiErrati.appendText(anagramma + "\n");
+	    		}	
+	    	}
+    	} catch(AnagrammiException ae){
+    		idTxtAnagrammiErrati.setText(ae.getMessage());
+	    }
 
     }
     
